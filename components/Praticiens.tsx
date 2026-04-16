@@ -1,29 +1,28 @@
 // components/Praticiens.tsx
 interface Praticien {
-  nom: string
-  specialite: string
-  rdv: boolean
+  nom: string;
+  specialite: string;
+  rdv: boolean;
 }
 
 const praticiens: Praticien[] = [
-  { nom: 'Dr. Thevenot', specialite: 'Médecin Généraliste', rdv: true },
-  { nom: 'Dr. Berrebi', specialite: 'Médecin Généraliste', rdv: true   },
-  { nom: 'Dr. Ivanova', specialite: 'Médecin Généraliste', rdv: true   },
-
-]
+  { nom: "Dr. Thevenot", specialite: "Médecin Généraliste", rdv: true },
+  { nom: "Dr. Berrebi", specialite: "Médecin Généraliste", rdv: true },
+  { nom: "Dr. Ivanova", specialite: "Médecin Généraliste", rdv: true },
+];
 
 const bandeaux = [
-  'bg-[#1a3a5c]',
-  'bg-[#2c6e9e]',
-  'bg-[#3a8c6e]',
-  'bg-[#4a9e7e]',
-  'bg-[#1a5c4a]',
-  'bg-[#0d2d47]',
-]
+  "bg-[#1a3a5c]",
+  "bg-[#2c6e9e]",
+  "bg-[#3a8c6e]",
+  "bg-[#4a9e7e]",
+  "bg-[#1a5c4a]",
+  "bg-[#0d2d47]",
+];
 
 export default function Praticiens() {
   return (
-    <section id="praticiens" className="bg-white py-24 px-6">
+    <section id="praticiens" className="bg-[#f4f7fb] py-24 px-6">
       <div className="max-w-5xl mx-auto">
         <p className="text-[#3a8c6e] font-semibold text-xs tracking-widest uppercase mb-3">
           Équipe
@@ -36,21 +35,24 @@ export default function Praticiens() {
           {praticiens.map((p, i) => (
             <div
               key={i}
-              className="rounded-2xl overflow-hidden shadow-md hover:-translate-y-1 transition-transform"
-            >
-              <div className={`${bandeaux[i % bandeaux.length]} h-28 flex items-center justify-center text-5xl`}>
+              className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+              <div
+                className={`${bandeaux[i % bandeaux.length]} h-28 flex items-center justify-center text-5xl`}>
                 {/* {p.emoji} */}
               </div>
               <div className="p-5">
-                <h3 className="text-[#1a3a5c] font-bold text-base mb-1">{p.nom}</h3>
-                <p className="text-[#3a8c6e] font-semibold text-sm mb-4">{p.specialite}</p>
+                <h3 className="text-[#1a3a5c] font-bold text-base mb-1">
+                  {p.nom}
+                </h3>
+                <p className="text-[#3a8c6e] font-semibold text-sm mb-4">
+                  {p.specialite}
+                </p>
                 {p.rdv && (
                   <a
                     href="https://www.cabinetmedicalduprovinois.fr/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-[#1a3a5c] text-white text-xs font-bold px-5 py-2 rounded-full hover:bg-[#2c6e9e] transition-colors inline-block"
-                  >
+                    className="bg-[#1a3a5c] text-white text-xs font-bold px-5 py-2 rounded-full hover:bg-[#2c6e9e] transition-colors inline-block">
                     Prendre RDV
                   </a>
                 )}
@@ -60,5 +62,5 @@ export default function Praticiens() {
         </div>
       </div>
     </section>
-  )
+  );
 }

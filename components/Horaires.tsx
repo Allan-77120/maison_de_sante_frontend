@@ -23,7 +23,7 @@ export default function Horaires() {
           Organisation
         </p>
         <h2 className="text-3xl md:text-4xl font-bold text-[#1a3a5c] mb-12">
-          Horaires d'ouverture
+          Horaires d’ouverture
         </h2>
 
         <div className="flex flex-col gap-3">
@@ -43,7 +43,7 @@ export default function Horaires() {
         </div>
 
         <div className="mt-8 bg-yellow-50 border border-yellow-300 rounded-xl px-6 py-4 text-sm text-yellow-800">
-          ⚠️ En cas d'urgence en dehors des horaires, composez le{' '}
+          ⚠️ En cas d’urgence en dehors des horaires, composez le{' '}
           <strong>15</strong> (SAMU) ou le <strong>116 117</strong> (médecin de garde)
         </div>
       </div>
