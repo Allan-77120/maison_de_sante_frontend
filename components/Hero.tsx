@@ -39,6 +39,10 @@ export default function Hero() {
         >
           Voir les horaires ↓
         </a>
+<a
+          href="#praticiens"
+          className="border-2 border-white/60 text-white font-semibold px-8 py-4 rounded-full text-sm hover:bg-white/10 transition-all"
+        >Praticiens ↓</a>
       </div>
     </section>
   )
