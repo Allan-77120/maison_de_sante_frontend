@@ -4,6 +4,7 @@ import Horaires from "@/components/Horaires";
 import Praticiens from "@/components/Praticiens";
 import MentionsLegales from "@/components/MentionsLegales";
 import Footer from "@/components/Footer";
+import Articles from "@/components/articles";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Praticiens />
       <Horaires />
       <MentionsLegales />
+      <Articles />
       <Footer />
     </main>
   );

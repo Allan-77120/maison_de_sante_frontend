@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react';
-
+import Image from "next/image";
 // 1. On définit la structure d'un article pour TypeScript
 interface Article {
   title: string;
@@ -41,7 +41,7 @@ export default function Articles() {
         {articles.map((article, index) => (
           <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
             {article.image && (
-              <img
+              <Image
                 src={article.image} 
                 alt={article.title} 
                 className="h-48 w-full object-cover"
