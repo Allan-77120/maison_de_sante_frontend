@@ -4,32 +4,32 @@ export default function MentionsLegales() {
       <div className="mx-auto max-w-6xl">
         <div className="mb-8 max-w-2xl">
           <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-[#3a8c6e]">
-            Informations legales
+            Informations légales
           </p>
           <h2 className="text-3xl font-bold text-[#1a3a5c] md:text-4xl">
-            Mentions legales
+            Mentions légales
           </h2>
         </div>
 
         <div className="grid gap-4 lg:grid-cols-[1.4fr_0.8fr_1fr]">
           <div className="rounded-2xl border border-[#e6dcc0] bg-[linear-gradient(135deg,#fffdf8_0%,#f8f3e8_100%)] px-6 py-5 shadow-sm">
-            <p className="mb-4 text-sm font-bold text-[#1a3a5c]">Editeur</p>
+            <p className="mb-4 text-sm font-bold text-[#1a3a5c]">Éditeur</p>
             <div className="space-y-2 text-sm leading-6 text-gray-600">
               <p>
-                Maison de Sante Universitaire du Provinois, Societe Civile de
-                Moyens au capital de 200 EUR
+                Maison de Santé Universitaire du Provinois, Société Civile de
+                Moyens au capital de 200 €
               </p>
               <p>
-                Representee par le{" "}
-                <strong className="text-[#1a3a5c]">Dr Marion Thevenot</strong>
+                Représentée par le{" "}
+                <strong className="text-[#1a3a5c]">Dr Marion Thévenot</strong>
               </p>
-              <p>3 Cour des Benedictins, 77160 Provins, France</p>
+              <p>3 Cour des Bénédictins, 77160 Provins, France</p>
               <p>
                 RCS Melun{" "}
                 <strong className="text-[#1a3a5c]">821 474 483</strong>
               </p>
               <p>
-                Tel :{" "}
+                Tél. :{" "}
                 <a
                   href="tel:0160675861"
                   className="text-[#2c6e9e] hover:underline"
@@ -47,17 +47,17 @@ export default function MentionsLegales() {
             <p className="text-sm leading-6 text-gray-600">
               Directeur de la publication :
               <br />
-              <strong className="text-[#1a3a5c]">Dr Marion Thevenot</strong>
+              <strong className="text-[#1a3a5c]">Dr Marion Thévenot</strong>
             </p>
           </div>
 
           <div className="rounded-2xl border border-[#e6dcc0] bg-[linear-gradient(135deg,#fffdf8_0%,#f8f3e8_100%)] px-6 py-5 shadow-sm">
             <p className="mb-4 text-sm font-bold text-[#1a3a5c]">
-              Donnees du site
+              Données du site
             </p>
             <p className="text-sm leading-6 text-gray-600">
-              Aucun financement exterieur, aucune publicite, et aucune collecte
-              de donnees personnelles des visiteurs.
+              Aucun financement extérieur, aucune publicité, et aucune collecte
+              de données personnelles des visiteurs.
             </p>
           </div>
         </div>

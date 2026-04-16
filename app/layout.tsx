@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Maison de Sante Universitaire du Provinois",
+  title: "Maison de Santé Universitaire du Provinois",
   description:
-    "Cabinet medical pluriprofessionnel universitaire a Provins : praticiens, horaires et actualites de prevention.",
+    "Cabinet médical pluriprofessionnel universitaire à Provins : praticiens, horaires et actualités de prévention.",
 };
 
 export default function RootLayout({

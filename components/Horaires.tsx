@@ -28,17 +28,23 @@ export default function Horaires() {
         <div className="flex flex-col gap-3">
           {jours.map(({ jour, matin, aprem }) => {
             const ferme = !matin && !aprem;
+            const dimanche = jour === "Dimanche";
+
             return (
               <div
                 key={jour}
-                className={`grid grid-cols-3 items-center bg-white rounded-xl px-6 py-4 shadow-sm ${
-                  ferme ? "opacity-50" : ""
-                }`}
+                className={`grid grid-cols-3 items-center rounded-xl px-6 py-4 shadow-sm border ${
+                  dimanche
+                    ? "bg-[#fff4ea] border-[#f0d7ba]"
+                    : "bg-white border-transparent"
+                } ${ferme && !dimanche ? "opacity-60" : ""}`}
               >
                 <span className="font-bold text-[#1a3a5c] text-sm">{jour}</span>
-                <span className="text-gray-500 text-sm">{matin ?? "-"}</span>
                 <span className="text-gray-500 text-sm">
-                  {aprem ?? "Ferme"}
+                  {matin ?? "Fermé"}
+                </span>
+                <span className="text-gray-500 text-sm">
+                  {aprem ?? "Fermé"}
                 </span>
               </div>
             );
@@ -54,7 +60,7 @@ export default function Horaires() {
               <p className="text-sm leading-6 text-[#49635a]">
                 En cas d&apos;urgence en dehors des horaires, composez le{" "}
                 <strong className="text-[#1a3a5c]">15</strong> (SAMU) ou le{" "}
-                <strong className="text-[#1a3a5c]">116 117</strong> (medecin de
+                <strong className="text-[#1a3a5c]">116 117</strong> (médecin de
                 garde).
               </p>
             </div>

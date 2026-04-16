@@ -69,7 +69,9 @@ function ArticleCardSkeleton({ index }: { index: number }) {
 
   return (
     <div className="card-shell animate-pulse">
-      <div className={`relative h-32 overflow-hidden bg-gradient-to-br ${visuel.frame}`}>
+      <div
+        className={`relative h-32 overflow-hidden bg-gradient-to-br ${visuel.frame}`}
+      >
         <div
           className={`absolute -right-6 top-4 h-24 w-24 rounded-full blur-sm ${visuel.orb}`}
         />
@@ -108,13 +110,13 @@ export default function Articles() {
         if (!res.ok) {
           throw new Error(
             data && "warning" in data
-              ? data.warning
+              ? data.warning || "Une erreur est survenue."
               : `Erreur API (${res.status} ${res.statusText})`,
           );
         }
 
         if (!Array.isArray(data?.articles)) {
-          throw new Error("Aucune actualite exploitable n'a ete retournee.");
+          throw new Error("Aucune actualité exploitable n'a été retournée.");
         }
 
         setArticles(data.articles);
@@ -125,7 +127,7 @@ export default function Articles() {
         setError(
           err instanceof Error
             ? err.message
-            : "Impossible de charger les actualites pour le moment.",
+            : "Impossible de charger les actualités pour le moment.",
         );
       } finally {
         setLoading(false);
@@ -136,10 +138,10 @@ export default function Articles() {
   }, []);
 
   return (
-    <section className="section-shell">
+    <section id="actualites" className="section-shell">
       <div className="section-inner max-w-7xl">
-        <p className="section-kicker">Actualites</p>
-        <h2 className="section-title">Nos actualites sante</h2>
+        <p className="section-kicker">Actualités</p>
+        <h2 className="section-title">Nos actualités santé</h2>
 
         {warning ? (
           <div className="mb-6 rounded-2xl border border-[var(--color-warning-border)] bg-[var(--color-warning-bg)] px-5 py-4 text-sm text-[var(--color-muted-strong)] shadow-sm">
@@ -163,7 +165,7 @@ export default function Articles() {
 
         {!loading && !error && articles.length === 0 ? (
           <div className="rounded-2xl border border-slate-200 bg-white px-6 py-8 text-center text-sm text-[var(--color-muted)] shadow-sm">
-            Aucune actualite n&apos;est disponible pour le moment.
+            Aucune actualité n&apos;est disponible pour le moment.
           </div>
         ) : null}
 
@@ -191,7 +193,7 @@ export default function Articles() {
                     />
                     <div className="absolute inset-x-5 top-5 flex items-center justify-between">
                       <span className="rounded-full bg-white/12 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/90 backdrop-blur-sm">
-                        Sante
+                        Santé
                       </span>
                     </div>
                   </div>
@@ -202,11 +204,11 @@ export default function Articles() {
                         {article.title}
                       </h3>
                       <p className="mb-4 text-sm font-semibold text-[var(--color-accent)]">
-                        Sante publique France
+                        Santé publique France
                       </p>
                       <p className="mb-4 min-h-[6rem] text-sm leading-6 text-[var(--color-muted)] line-clamp-4">
                         {article.description ||
-                          "Retrouvez cette actualite sur le site de Sante publique France."}
+                          "Retrouvez cette actualité sur le site de Santé publique France."}
                       </p>
                     </div>
 

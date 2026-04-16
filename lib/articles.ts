@@ -38,7 +38,7 @@ export function createArticleCache(): ArticleCache {
 
 export function decodeHtml(text: string) {
   return text
-    .replace(/<!\[CDATA\[(.*?)\]\]>/gs, "$1")
+    .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1")
     .replace(/&nbsp;/g, " ")
     .replace(/&amp;/g, "&")
     .replace(/&quot;/g, '"')
@@ -109,7 +109,7 @@ export function getFallbackArticles(): Article[] {
 export function buildSuccessPayload(
   articles: Article[],
   updatedAt: number,
-  options?: Pick<ArticlesPayload, "cached" | "source" | "warning">,
+  options?: Partial<Pick<ArticlesPayload, "cached" | "source" | "warning">>,
 ): ArticlesPayload {
   return {
     articles,

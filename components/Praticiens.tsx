@@ -1,4 +1,3 @@
-// components/Praticiens.tsx
 interface Praticien {
   nom: string;
   specialite: string;
@@ -7,9 +6,24 @@ interface Praticien {
 }
 
 const praticiens: Praticien[] = [
-  { nom: "Dr. Thevenot", specialite: "Médecin Généraliste", rdv: true, url: "https://docteur-thevenot.sante.pro/" },
-  { nom: "Dr. Berrebi", specialite: "Médecin Généraliste", rdv: true,  url: "https://docteur-berrebi.sante.pro/" },
-  { nom: "Dr. Ivanova", specialite: "Médecin Généraliste", rdv: true ,  url: "https://docteur-ivanova.sante.pro/"},
+  {
+    nom: "Dr. Thevenot",
+    specialite: "Médecin généraliste",
+    rdv: true,
+    url: "https://docteur-thevenot.sante.pro/",
+  },
+  {
+    nom: "Dr. Berrebi",
+    specialite: "Médecin généraliste",
+    rdv: true,
+    url: "https://docteur-berrebi.sante.pro/",
+  },
+  {
+    nom: "Dr. Ivanova",
+    specialite: "Médecin généraliste",
+    rdv: true,
+    url: "https://docteur-ivanova.sante.pro/",
+  },
 ];
 
 const bandeaux = [
@@ -36,11 +50,11 @@ export default function Praticiens() {
           {praticiens.map((p, i) => (
             <div
               key={i}
-              className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+              className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+            >
               <div
-                className={`${bandeaux[i % bandeaux.length]} h-28 flex items-center justify-center text-5xl`}>
-                {/* {p.emoji} */}
-              </div>
+                className={`${bandeaux[i % bandeaux.length]} h-28 flex items-center justify-center text-5xl`}
+              />
               <div className="p-5">
                 <h3 className="text-[#1a3a5c] font-bold text-base mb-1">
                   {p.nom}
@@ -53,7 +67,8 @@ export default function Praticiens() {
                     href={p.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-[#1a3a5c] text-white text-xs font-bold px-5 py-2 rounded-full hover:bg-[#2c6e9e] transition-colors inline-block">
+                    className="bg-[#1a3a5c] text-white text-xs font-bold px-5 py-2 rounded-full hover:bg-[#2c6e9e] transition-colors inline-block"
+                  >
                     Prendre RDV
                   </a>
                 )}
