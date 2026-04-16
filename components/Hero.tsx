@@ -26,7 +26,7 @@ export default function Hero() {
 
       <div className="relative z-10 flex flex-wrap gap-4 justify-center">
         <a
-          href="https://www.doctolib.fr"
+          href="https://www.cabinetmedicalduprovinois.fr/"
           target="_blank"
           rel="noopener noreferrer"
           className="bg-white text-[#1a3a5c] font-bold px-8 py-4 rounded-full text-sm hover:shadow-lg hover:scale-105 transition-all"
