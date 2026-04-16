@@ -3,12 +3,13 @@ interface Praticien {
   nom: string;
   specialite: string;
   rdv: boolean;
+  url: string;
 }
 
 const praticiens: Praticien[] = [
-  { nom: "Dr. Thevenot", specialite: "Médecin Généraliste", rdv: true },
-  { nom: "Dr. Berrebi", specialite: "Médecin Généraliste", rdv: true },
-  { nom: "Dr. Ivanova", specialite: "Médecin Généraliste", rdv: true },
+  { nom: "Dr. Thevenot", specialite: "Médecin Généraliste", rdv: true, url: "https://docteur-thevenot.sante.pro/" },
+  { nom: "Dr. Berrebi", specialite: "Médecin Généraliste", rdv: true,  url: "https://docteur-berrebi.sante.pro/" },
+  { nom: "Dr. Ivanova", specialite: "Médecin Généraliste", rdv: true ,  url: "https://docteur-ivanova.sante.pro/"},
 ];
 
 const bandeaux = [
@@ -49,7 +50,7 @@ export default function Praticiens() {
                 </p>
                 {p.rdv && (
                   <a
-                    href="https://www.cabinetmedicalduprovinois.fr/"
+                    href={p.url}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-[#1a3a5c] text-white text-xs font-bold px-5 py-2 rounded-full hover:bg-[#2c6e9e] transition-colors inline-block">
