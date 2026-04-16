@@ -23,7 +23,7 @@ const bandeaux = [
 
 export default function Praticiens() {
   return (
-    <section id="praticiens" className="bg-[#f4f7fb] py-24 px-6">
+    <section id="praticiens" className="bg-[#f4f7fb] py-20 px-6">
       <div className="max-w-5xl mx-auto">
         <p className="text-[#3a8c6e] font-semibold text-xs tracking-widest uppercase mb-3">
           Équipe

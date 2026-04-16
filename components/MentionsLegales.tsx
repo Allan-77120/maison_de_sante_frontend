@@ -1,43 +1,67 @@
-// components/MentionsLegales.tsx
 export default function MentionsLegales() {
   return (
-    <section id="mentions" className="bg-[#f4f7fb] py-24 px-6">
-      <div className="max-w-2xl mx-auto">
-        <p className="text-[#3a8c6e] font-semibold text-xs tracking-widest uppercase mb-3">
-          Informations légales
-        </p>
-        <h2 className="text-3xl md:text-4xl font-bold text-[#1a3a5c] mb-12">
-          Mentions légales
-        </h2>
+    <section id="mentions" className="bg-[#f4f7fb] px-6 py-14">
+      <div className="mx-auto max-w-6xl">
+        <div className="mb-8 max-w-2xl">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-[#3a8c6e]">
+            Informations legales
+          </p>
+          <h2 className="text-3xl font-bold text-[#1a3a5c] md:text-4xl">
+            Mentions legales
+          </h2>
+        </div>
 
-        <div className="flex flex-col gap-3">
-
-          <div className="bg-white rounded-xl px-6 py-5 shadow-sm">
-            <p className="font-bold text-[#1a3a5c] text-sm mb-3">Éditeur</p>
-            <div className="text-sm text-gray-500 space-y-1">
-              <p>Maison de Santé Universitaire du Provinois, Société Civile de Moyens au capital de 200 €</p>
-              <p>Représentée par le <strong className="text-[#1a3a5c]">Dr Marion Thévenot</strong></p>
-              <p>Siège social : 3 Cour des Bénédictins, 77160 Provins, France</p>
-              <p>SCM immatriculée au RCS de Melun sous le numéro <strong className="text-[#1a3a5c]">821.474.483</strong></p>
-              <p>Tél : <a href="tel:0160675861" className="text-[#2c6e9e] hover:underline">01 60 67 58 61</a></p>
+        <div className="grid gap-4 lg:grid-cols-[1.4fr_0.8fr_1fr]">
+          <div className="rounded-2xl border border-[#e6dcc0] bg-[linear-gradient(135deg,#fffdf8_0%,#f8f3e8_100%)] px-6 py-5 shadow-sm">
+            <p className="mb-4 text-sm font-bold text-[#1a3a5c]">Editeur</p>
+            <div className="space-y-2 text-sm leading-6 text-gray-600">
+              <p>
+                Maison de Sante Universitaire du Provinois, Societe Civile de
+                Moyens au capital de 200 EUR
+              </p>
+              <p>
+                Representee par le{" "}
+                <strong className="text-[#1a3a5c]">Dr Marion Thevenot</strong>
+              </p>
+              <p>3 Cour des Benedictins, 77160 Provins, France</p>
+              <p>
+                RCS Melun{" "}
+                <strong className="text-[#1a3a5c]">821 474 483</strong>
+              </p>
+              <p>
+                Tel :{" "}
+                <a
+                  href="tel:0160675861"
+                  className="text-[#2c6e9e] hover:underline"
+                >
+                  01 60 67 58 61
+                </a>
+              </p>
             </div>
           </div>
 
-          <div className="bg-white rounded-xl px-6 py-5 shadow-sm">
-            <p className="font-bold text-[#1a3a5c] text-sm mb-3">Directeur de la publication</p>
-            <p className="text-sm text-gray-500">Dr Marion Thévenot</p>
-          </div>
-
-          <div className="bg-white rounded-xl px-6 py-5 shadow-sm">
-            <p className="font-bold text-[#1a3a5c] text-sm mb-3">Financement & données</p>
-            <p className="text-sm text-gray-500">
-              Le site ne bénéficie d’aucun financement extérieur, refuse la publicité,
-              et ne collecte ni ne traite aucune information concernant ses visiteurs.
+          <div className="rounded-2xl border border-[#e6dcc0] bg-[linear-gradient(135deg,#fffdf8_0%,#f8f3e8_100%)] px-6 py-5 shadow-sm">
+            <p className="mb-4 text-sm font-bold text-[#1a3a5c]">
+              Publication
+            </p>
+            <p className="text-sm leading-6 text-gray-600">
+              Directeur de la publication :
+              <br />
+              <strong className="text-[#1a3a5c]">Dr Marion Thevenot</strong>
             </p>
           </div>
 
+          <div className="rounded-2xl border border-[#e6dcc0] bg-[linear-gradient(135deg,#fffdf8_0%,#f8f3e8_100%)] px-6 py-5 shadow-sm">
+            <p className="mb-4 text-sm font-bold text-[#1a3a5c]">
+              Donnees du site
+            </p>
+            <p className="text-sm leading-6 text-gray-600">
+              Aucun financement exterieur, aucune publicite, et aucune collecte
+              de donnees personnelles des visiteurs.
+            </p>
+          </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

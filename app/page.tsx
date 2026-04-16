@@ -11,8 +11,8 @@ export default function Home() {
       <Hero />
       <Praticiens />
       <Horaires />
-      <MentionsLegales />
       <Articles />
+      <MentionsLegales />
       <Footer />
     </main>
   );

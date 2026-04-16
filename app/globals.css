@@ -1,8 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f4f7fb;
+  --foreground: #17324d;
+  --surface: #ffffff;
+  --surface-alt: #fffdf8;
+  --color-primary: #1a3a5c;
+  --color-accent: #3a8c6e;
+  --color-muted: #5f6c7b;
+  --color-muted-soft: #7b8794;
+  --color-muted-strong: #49635a;
+  --color-warning-bg: #f8f3e8;
+  --color-warning-border: #e6dcc0;
+  --shadow-card: 0 16px 34px rgba(18, 44, 66, 0.08);
 }
 
 @theme inline {
@@ -12,18 +22,69 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
+
 html {
   scroll-behavior: smooth;
+}
+
+.section-shell {
+  background: var(--background);
+  padding: 5rem 1.5rem;
+}
+
+.section-inner {
+  margin-inline: auto;
+}
+
+.section-kicker {
+  margin-bottom: 0.75rem;
+  color: var(--color-accent);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.section-title {
+  margin-bottom: 3rem;
+  color: var(--color-primary);
+  font-size: clamp(1.875rem, 3vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.card-shell {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.card-shell:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(18, 44, 66, 0.12);
+}
+
+.btn-primary {
+  border-radius: 9999px;
+  background: var(--color-primary);
+  color: white;
+  font-weight: 700;
+  padding: 0.5rem 1.25rem;
+  transition: background-color 150ms ease;
+}
+
+.btn-primary:hover {
+  background: #2c6e9e;
 }
