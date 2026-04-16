@@ -13,13 +13,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-
-  experimental: {
-    turbopack: {
-      root: "C:/Users/Allan/Desktop/maison de sante/frontend",
-    },
-  },
-
   async headers() {
     return [
       {
