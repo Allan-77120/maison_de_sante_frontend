@@ -44,6 +44,8 @@ export default function Articles() {
               <Image
                 src={article.image} 
                 alt={article.title} 
+                width={500}
+                height={300}
                 className="h-48 w-full object-cover"
               />
             )}
