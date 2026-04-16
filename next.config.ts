@@ -4,14 +4,34 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: '**', // Le double astérisque autorise TOUS les sites (parfait pour GNews)
+        protocol: "https",
+        hostname: "**",
       },
       {
-        protocol: 'http',
-        hostname: '**',
+        protocol: "http",
+        hostname: "localhost",
       },
     ],
+  },
+
+  experimental: {
+    turbopack: {
+      root: "C:/Users/Allan/Desktop/maison de sante/frontend",
+    },
+  },
+
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          {
+            key: "Access-Control-Allow-Origin",
+            value: "http://localhost:3000",
+          },
+        ],
+      },
+    ];
   },
 };
 

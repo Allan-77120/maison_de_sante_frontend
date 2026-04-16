@@ -11,7 +11,6 @@ export default function Home() {
       <Hero />
       <Praticiens />
       <Horaires />
-      <Articles/> 
       <MentionsLegales />
       <Articles />
       <Footer />
