@@ -14,6 +14,7 @@ export type Praticien = {
   adresse?: string[];
   acces?: string;
   horaires?: string;
+telephone?: string;
 };
 
 export const praticiens: Praticien[] = [
