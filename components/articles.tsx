@@ -2,6 +2,7 @@ import ArticlesClient from "@/components/ArticlesClient";
 import {
   buildSuccessPayload,
   fetchArticlesFeed,
+  getArticlesUpdatedAt,
   getFallbackArticles,
   type ArticlesPayload,
 } from "@/lib/articles";
@@ -11,17 +12,21 @@ export default async function Articles() {
 
   try {
     const articles = await fetchArticlesFeed();
-    payload = buildSuccessPayload(articles, Date.now());
+    payload = buildSuccessPayload(articles, getArticlesUpdatedAt(articles));
   } catch (error) {
     console.error("Erreur Articles server component:", error);
 
     const fallbackArticles = getFallbackArticles();
-    payload = buildSuccessPayload(fallbackArticles, Date.now(), {
-      cached: true,
-      source: "fallback-local",
-      warning:
-        "Flux distant indisponible, affichage d'une selection de secours.",
-    });
+    payload = buildSuccessPayload(
+      fallbackArticles,
+      getArticlesUpdatedAt(fallbackArticles),
+      {
+        cached: true,
+        source: "fallback-local",
+        warning:
+          "Flux distant indisponible, affichage d'une selection de secours.",
+      },
+    );
   }
 
   return <ArticlesClient payload={payload} />;

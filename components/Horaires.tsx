@@ -1,7 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
 interface Jour {
   jour: string;
   matin: string | null;
@@ -47,11 +45,7 @@ const mobileRows = [
 ];
 
 export default function Horaires() {
-  const [currentDay, setCurrentDay] = useState("");
-
-  useEffect(() => {
-    setCurrentDay(dayNames[new Date().getDay()]);
-  }, []);
+  const currentDay = dayNames[new Date().getDay()];
 
   return (
     <section id="horaires" className="section-shell">
@@ -77,7 +71,7 @@ export default function Horaires() {
                 <p className="text-sm font-semibold text-[#1a2f4e]">{row.jour}</p>
                 <p
                   className={`text-sm ${
-                    row.closed ? "font-semibold text-[#c23b3b]" : "text-[#5f6c7b]"
+                    row.closed ? "font-semibold text-[#9b7a2e]" : "text-[#5f6c7b]"
                   }`}
                 >
                   {row.horaires}
@@ -127,17 +121,15 @@ export default function Horaires() {
           </div>
         </div>
 
-        <div className="mt-6 overflow-hidden rounded-[1.75rem] border border-[#e6dcc0] bg-[linear-gradient(135deg,#fffdf8_0%,#f8f3e8_100%)] shadow-sm md:mt-8">
-          <div className="flex items-start gap-4 px-4 py-4 md:px-5 md:py-5">
-            <div>
-              <p className="mb-1 text-xs font-semibold uppercase tracking-[0.24em] text-[#60707d]">
+        <div className="mx-auto mt-6 max-w-[26rem] overflow-hidden rounded-[1.5rem] border border-[#e6dcc0] bg-[linear-gradient(135deg,#fffdf8_0%,#f8f3e8_100%)] shadow-sm md:mt-8">
+          <div className="px-4 py-3.5 text-center md:px-5 md:py-4">
+            <div className="mx-auto max-w-[20rem]">
+              <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#60707d]">
                 Urgence
               </p>
-              <p className="text-sm leading-6 text-[#49635a]">
+              <p className="text-sm leading-5 text-[#49635a]">
                 En cas d&apos;urgence en dehors des horaires, composez le{" "}
-                <strong className="text-[#1a2f4e]">15</strong> (SAMU) ou le{" "}
-                <strong className="text-[#1a2f4e]">116 117</strong> (medecin de
-                garde).
+                <strong className="text-[#1a2f4e]">15</strong> (SAMU)
               </p>
             </div>
           </div>

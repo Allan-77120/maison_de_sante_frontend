@@ -151,6 +151,17 @@ export function buildSuccessPayload(
   };
 }
 
+export function getArticlesUpdatedAt(articles: Article[]): number {
+  const firstDatedArticle = articles.find((article) => article.publishedAt);
+
+  if (!firstDatedArticle?.publishedAt) {
+    return 0;
+  }
+
+  const parsed = new Date(firstDatedArticle.publishedAt).getTime();
+  return Number.isNaN(parsed) ? 0 : parsed;
+}
+
 export async function fetchArticlesFeed() {
   const response = await fetch(SPF_RSS_URL, {
     next: { revalidate: 900 },
