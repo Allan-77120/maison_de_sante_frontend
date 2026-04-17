@@ -4,7 +4,6 @@ export type Praticien = {
   initiales: string;
   specialite: string;
   langues: string[];
-
   url: string;
   rpps?: string;
   diplome?: string;
@@ -14,6 +13,7 @@ export type Praticien = {
   carteVitale?: boolean;
   adresse?: string[];
   acces?: string;
+  horaires?: string;
 };
 
 export const praticiens: Praticien[] = [
