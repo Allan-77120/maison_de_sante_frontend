@@ -2,53 +2,58 @@ export default function Hero() {
   return (
     <section
       id="accueil"
-      className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 py-20 bg-gradient-to-br from-[#1a3a5c] via-[#2c6e9e] to-[#3a8c6e]"
+      className="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,#3e8fda_0%,#2d7dd2_24%,#1a2f4e_70%)] px-5 py-16 text-center text-white sm:px-6 sm:py-20"
     >
-      <div
-        className="absolute bottom-0 left-0 right-0 h-20 bg-white"
-        style={{ clipPath: "ellipse(55% 100% at 50% 100%)" }}
-      />
+      <div className="mx-auto flex min-h-[78vh] max-w-5xl flex-col items-center justify-center">
+        <span className="mb-6 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-[11px] uppercase tracking-[0.22em] text-white sm:mb-7 sm:px-5 sm:text-xs">
+          Maison de sante universitaire
+        </span>
 
-      <span className="bg-white/20 text-white text-xs tracking-widest uppercase px-5 py-2 rounded-full mb-7">
-        Maison de Santé Universitaire
-      </span>
+        <h1 className="mb-4 max-w-4xl text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
+          Votre sante entre
+          <span className="block text-[#8ee0c1]">de bonnes mains</span>
+        </h1>
 
-      <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight max-w-2xl mb-5">
-        Votre santé entre <br />
-        <span className="text-[#7edcb5]">de bonnes mains</span>
-      </h1>
+        <p className="mb-8 max-w-2xl text-base leading-7 text-white/82 sm:mb-10 sm:text-lg">
+          Cabinet medical pluriprofessionnel universitaire a Provins. Consultez
+          vos praticiens, les horaires, l&apos;acces au cabinet et les actualites
+          de prevention.
+        </p>
 
-      <p className="text-white/80 text-lg max-w-md mb-10 leading-relaxed">
-        Cabinet pluriprofessionnel universitaire
-      </p>
-
-      <div className="relative z-10 flex flex-wrap gap-4 justify-center">
-        <a
-          href="https://www.cabinetmedicalduprovinois.fr/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-white text-[#1a3a5c] font-bold px-8 py-4 rounded-full text-sm hover:shadow-lg hover:scale-105 transition-all"
-        >
-          Prendre RDV
-        </a>
-        <a
-          href="#horaires"
-          className="border-2 border-white/60 text-white font-semibold px-8 py-4 rounded-full text-sm hover:bg-white/10 transition-all"
-        >
-          Voir les horaires ↓
-        </a>
-        <a
-          href="#praticiens"
-          className="border-2 border-white/60 text-white font-semibold px-8 py-4 rounded-full text-sm hover:bg-white/10 transition-all"
-        >
-          Praticiens ↓
-        </a>
-        <a
-          href="#actualites"
-          className="border-2 border-white/60 text-white font-semibold px-8 py-4 rounded-full text-sm hover:bg-white/10 transition-all"
-        >
-          Actualités ↓
-        </a>
+        <div className="grid w-full max-w-xl grid-cols-2 gap-3 sm:flex sm:max-w-none sm:flex-wrap sm:justify-center">
+          <a
+            href="https://www.cabinetmedicalduprovinois.fr/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="col-span-2 rounded-full bg-white px-6 py-3.5 text-sm font-bold text-[#1a2f4e] transition duration-200 hover:-translate-y-0.5 hover:bg-[#f2f7fd] hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:col-span-1 sm:px-8 sm:py-4"
+          >
+            Prendre RDV
+          </a>
+          <a
+            href="#praticiens"
+            className="rounded-full border border-white/30 px-4 py-3 text-center text-sm font-semibold text-white transition duration-200 hover:bg-white/10"
+          >
+            Praticiens
+          </a>
+          <a
+            href="#horaires"
+            className="rounded-full border border-white/30 px-4 py-3 text-center text-sm font-semibold text-white transition duration-200 hover:bg-white/10"
+          >
+            Horaires
+          </a>
+          <a
+            href="#acces"
+            className="rounded-full border border-white/30 px-4 py-3 text-center text-sm font-semibold text-white transition duration-200 hover:bg-white/10"
+          >
+            Acces
+          </a>
+          <a
+            href="#actualites"
+            className="rounded-full border border-white/30 px-4 py-3 text-center text-sm font-semibold text-white transition duration-200 hover:bg-white/10"
+          >
+            Actualites
+          </a>
+        </div>
       </div>
     </section>
   );

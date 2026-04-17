@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 interface Jour {
   jour: string;
   matin: string | null;
@@ -5,62 +9,134 @@ interface Jour {
 }
 
 const jours: Jour[] = [
-  { jour: "Lundi", matin: "08h00 - 12h00", aprem: "14h00 - 19h00" },
-  { jour: "Mardi", matin: "08h00 - 12h00", aprem: "14h00 - 19h00" },
-  { jour: "Mercredi", matin: "08h00 - 12h00", aprem: "14h00 - 19h00" },
-  { jour: "Jeudi", matin: "08h00 - 12h00", aprem: "14h00 - 19h00" },
-  { jour: "Vendredi", matin: "08h00 - 12h00", aprem: "14h00 - 18h00" },
-  { jour: "Samedi", matin: "08h30 - 12h30", aprem: null },
+  { jour: "Lundi", matin: "09h00 - 12h00", aprem: "14h00 - 19h00" },
+  { jour: "Mardi", matin: "09h00 - 12h00", aprem: "14h00 - 19h00" },
+  { jour: "Mercredi", matin: "09h00 - 12h00", aprem: "14h00 - 19h00" },
+  { jour: "Jeudi", matin: "09h00 - 12h00", aprem: "14h00 - 19h00" },
+  { jour: "Vendredi", matin: "09h00 - 12h00", aprem: "14h00 - 19h00" },
+  { jour: "Samedi", matin: "09h00 - 12h00", aprem: null },
   { jour: "Dimanche", matin: null, aprem: null },
 ];
 
+const dayNames = [
+  "Dimanche",
+  "Lundi",
+  "Mardi",
+  "Mercredi",
+  "Jeudi",
+  "Vendredi",
+  "Samedi",
+];
+
+const mobileRows = [
+  {
+    jour: "Lundi au Vendredi",
+    horaires: "09h00-12h00 / 14h00-19h00",
+    closed: false,
+  },
+  {
+    jour: "Samedi",
+    horaires: "08h30-12h30",
+    closed: false,
+  },
+  {
+    jour: "Dimanche",
+    horaires: "Ferme",
+    closed: true,
+  },
+];
+
 export default function Horaires() {
+  const [currentDay, setCurrentDay] = useState("");
+
+  useEffect(() => {
+    setCurrentDay(dayNames[new Date().getDay()]);
+  }, []);
+
   return (
-    <section id="horaires" className="bg-[#f4f7fb] py-20 px-6">
-      <div className="max-w-2xl mx-auto">
-        <p className="text-[#3a8c6e] font-semibold text-xs tracking-widest uppercase mb-3">
-          Organisation
-        </p>
-        <h2 className="text-3xl md:text-4xl font-bold text-[#1a3a5c] mb-12">
-          Horaires d&apos;ouverture
-        </h2>
+    <section id="horaires" className="section-shell">
+      <div className="section-inner max-w-4xl">
+        <p className="section-kicker">Organisation</p>
+        <h2 className="section-title">Horaires d&apos;ouverture</h2>
 
-        <div className="flex flex-col gap-3">
-          {jours.map(({ jour, matin, aprem }) => {
-            const ferme = !matin && !aprem;
-            const dimanche = jour === "Dimanche";
-
-            return (
+        <div className="md:hidden">
+          <div className="overflow-hidden rounded-[1.5rem] border border-[#d9e3ee] bg-white shadow-sm">
+            <div className="grid grid-cols-[1.15fr_1fr] border-b border-[#e6edf5] bg-[#f7fafd] px-4 py-3">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#60708a]">
+                Jour
+              </p>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#60708a]">
+                Horaires
+              </p>
+            </div>
+            {mobileRows.map((row) => (
               <div
-                key={jour}
-                className={`grid grid-cols-3 items-center rounded-xl px-6 py-4 shadow-sm border ${
-                  dimanche
-                    ? "bg-[#fff4ea] border-[#f0d7ba]"
-                    : "bg-white border-transparent"
-                } ${ferme && !dimanche ? "opacity-60" : ""}`}
+                key={row.jour}
+                className="grid grid-cols-[1.15fr_1fr] gap-3 border-b border-[#eef3f8] px-4 py-3 last:border-b-0"
               >
-                <span className="font-bold text-[#1a3a5c] text-sm">{jour}</span>
-                <span className="text-gray-500 text-sm">
-                  {matin ?? "Fermé"}
-                </span>
-                <span className="text-gray-500 text-sm">
-                  {aprem ?? "Fermé"}
-                </span>
+                <p className="text-sm font-semibold text-[#1a2f4e]">{row.jour}</p>
+                <p
+                  className={`text-sm ${
+                    row.closed ? "font-semibold text-[#c23b3b]" : "text-[#5f6c7b]"
+                  }`}
+                >
+                  {row.horaires}
+                </p>
               </div>
-            );
-          })}
+            ))}
+          </div>
         </div>
 
-        <div className="mt-8 overflow-hidden rounded-2xl border border-[#e6dcc0] bg-[linear-gradient(135deg,#fffdf8_0%,#f8f3e8_100%)] shadow-sm">
-          <div className="flex items-start gap-4 px-5 py-5">
+        <div className="hidden md:block">
+          <div className="flex flex-col gap-3">
+            {jours.map(({ jour, matin, aprem }) => {
+              const ferme = !matin && !aprem;
+              const dimanche = jour === "Dimanche";
+              const isToday = jour === currentDay;
+
+              return (
+                <div
+                  key={jour}
+                  className={`grid grid-cols-1 gap-3 rounded-2xl border px-5 py-4 shadow-sm transition duration-200 sm:grid-cols-[1fr_1fr_1fr] sm:items-center sm:px-6 ${
+                    isToday
+                      ? "border-[#2d7dd2] bg-[#eef5fd] shadow-[0_16px_34px_rgba(45,125,210,0.14)]"
+                      : dimanche
+                        ? "border-[#e6dcc0] bg-[linear-gradient(135deg,#fffdf8_0%,#f8f3e8_100%)]"
+                        : "border-transparent bg-white"
+                  } ${ferme && !dimanche ? "opacity-70" : ""}`}
+                >
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="text-sm font-bold text-[#1a2f4e]">
+                      {jour}
+                    </span>
+                    {isToday ? (
+                      <span className="rounded-full bg-[#2d7dd2] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-white">
+                        Aujourd&apos;hui
+                      </span>
+                    ) : null}
+                  </div>
+                  <span className="text-sm text-[#5f6c7b]">
+                    {matin ?? "Ferme"}
+                  </span>
+                  <span className="text-sm text-[#5f6c7b]">
+                    {aprem ?? "Ferme"}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="mt-6 overflow-hidden rounded-[1.75rem] border border-[#e6dcc0] bg-[linear-gradient(135deg,#fffdf8_0%,#f8f3e8_100%)] shadow-sm md:mt-8">
+          <div className="flex items-start gap-4 px-4 py-4 md:px-5 md:py-5">
             <div>
               <p className="mb-1 text-xs font-semibold uppercase tracking-[0.24em] text-[#60707d]">
                 Urgence
               </p>
               <p className="text-sm leading-6 text-[#49635a]">
                 En cas d&apos;urgence en dehors des horaires, composez le{" "}
-                <strong className="text-[#1a3a5c]">15</strong> (SAMU) ou le{" "}
-                <strong className="text-[#1a3a5c]">116 117</strong> (médecin de
+                <strong className="text-[#1a2f4e]">15</strong> (SAMU) ou le{" "}
+                <strong className="text-[#1a2f4e]">116 117</strong> (medecin de
                 garde).
               </p>
             </div>

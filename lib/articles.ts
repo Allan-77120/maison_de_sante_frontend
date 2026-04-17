@@ -5,6 +5,14 @@ export const SPF_RSS_URL =
 export const CACHE_TTL_MS = 15 * 60 * 1000;
 export const MAX_ARTICLES = 5;
 
+const medicalImages = [
+  "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80",
+  "https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1200&q=80",
+  "https://images.unsplash.com/photo-1581056771107-24ca5f033842?auto=format&fit=crop&w=1200&q=80",
+  "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1200&q=80",
+  "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1200&q=80",
+];
+
 export type Article = {
   title: string;
   description: string;
@@ -66,20 +74,38 @@ export function extractTagValue(block: string, tagName: string) {
   return match ? decodeHtml(match[1]) : "";
 }
 
-export function normalizeArticle(article: Partial<Article>): Article {
+function improveDescription(title: string, description: string) {
+  const cleaned = description.replace(/\s+/g, " ").trim();
+  const short = cleaned.replace(title, "").trim().replace(/^[-:]+/, "").trim();
+  const base =
+    short ||
+    "Retrouvez une synthese claire de cette actualite de prevention et de sante publique.";
+
+  if (base.length <= 150) {
+    return base;
+  }
+
+  return `${base.slice(0, 147).trimEnd()}...`;
+}
+
+export function normalizeArticle(
+  article: Partial<Article>,
+  index = 0,
+): Article {
   const title = article.title?.trim() || "Actualite sante";
-  const description =
-    article.description?.trim() ||
-    "Retrouvez cette actualite sur le site de Sante publique France.";
   const url = article.url?.trim() || "https://www.santepubliquefrance.fr/";
   const publishedAt = article.publishedAt?.trim() || "";
+  const rawDescription =
+    article.description?.trim() ||
+    "Retrouvez cette actualite sur le site de Sante publique France.";
+  const description = improveDescription(title, rawDescription);
 
   return {
     title,
     description,
     content: article.content?.trim() || description,
     url,
-    image: article.image?.trim() || "",
+    image: article.image?.trim() || medicalImages[index % medicalImages.length],
     publishedAt,
   };
 }
@@ -89,21 +115,26 @@ export function extractArticlesFromXml(xml: string): Article[] {
 
   return items
     .slice(0, MAX_ARTICLES)
-    .map(item =>
-      normalizeArticle({
-        title: extractTagValue(item, "title"),
-        description: extractTagValue(item, "description"),
-        content: extractTagValue(item, "description"),
-        url: extractTagValue(item, "link"),
-        image: "",
-        publishedAt: extractTagValue(item, "pubDate"),
-      }),
+    .map((item, index) =>
+      normalizeArticle(
+        {
+          title: extractTagValue(item, "title"),
+          description: extractTagValue(item, "description"),
+          content: extractTagValue(item, "description"),
+          url: extractTagValue(item, "link"),
+          image: "",
+          publishedAt: extractTagValue(item, "pubDate"),
+        },
+        index,
+      ),
     )
-    .filter(article => article.title && article.url);
+    .filter((article) => article.title && article.url);
 }
 
 export function getFallbackArticles(): Article[] {
-  return fallbackArticles.map(article => normalizeArticle(article));
+  return fallbackArticles.map((article, index) =>
+    normalizeArticle(article, index),
+  );
 }
 
 export function buildSuccessPayload(
