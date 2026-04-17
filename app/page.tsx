@@ -1,11 +1,10 @@
-// app/page.jsx
 import Hero from "@/components/Hero";
 import Horaires from "@/components/Horaires";
 import Praticiens from "@/components/Praticiens";
 import MentionsLegales from "@/components/MentionsLegales";
 import Footer from "@/components/Footer";
 import Acces from "@/components/Acces";
-import MobileBottomNav from "@/components/MobileBottomNav";
+import MobileBottomNavClient from "@/components/MobileBottomNavClient";
 import Articles from "@/components/articles";
 export default function Home() {
   return (
@@ -17,7 +16,7 @@ export default function Home() {
       <Articles />
       <MentionsLegales />
       <Footer />
-      <MobileBottomNav />
+      <MobileBottomNavClient />
     </main>
   );
 }
